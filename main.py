@@ -1,10 +1,13 @@
 from g4f.client import Client
 import asyncio
 from typing import Union
+import sys
+import platform
 
 from fastapi import FastAPI
 
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+if platform.system() == "Windows":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 app = FastAPI()
 
