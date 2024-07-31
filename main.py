@@ -9,11 +9,11 @@ asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 app = FastAPI()
 
 @app.get("/")
-def show_error():
+async def show_error():
     return {"error" : "Authentication required."}
 
 @app.post("/promt/{user_promt}")
-def read_promt(user_promt: str):
+async def read_promt(user_promt: str):
     client = Client()
     try:
         response = client.chat.completions.create(
